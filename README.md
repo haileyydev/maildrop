@@ -1,5 +1,5 @@
 <h1>
-    <img src="pictures/icon.svg" height="16" width="auto" alt="logo" style="vertical-align: middle; margin-right: 15px;">
+    <img src="pictures/icon.svg" height="32" width="auto" alt="logo" style="vertical-align: middle; margin-right: 15px;">
     Maildrop
 </h1>
 
