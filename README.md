@@ -33,7 +33,7 @@ Maildrop is a self hostable and easy to use disposable email service that allows
 1.  **Clone the repository**
 
     ```bash
-    git clone [https://github.com/haileyydev/maildrop.git](https://github.com/haileyydev/maildrop.git)
+    git clone https://github.com/haileyydev/maildrop.git
     cd maildrop
     ```
 
@@ -57,3 +57,12 @@ Maildrop is a self hostable and easy to use disposable email service that allows
     ```
 
 **The application must be run as root for the SMTP server to work**
+
+### Connecting to your domain  
+
+1. Ensure port 25 is open as this is the port the email server uses. Some ISPs block this so you may need to use a tunnel or host maildrop in the cloud.
+2. Edit your domains dns settings and create an `A` record pointing to your public IP.
+3. Edit your domains dns settings and create an `MX` record pointing to the domain you made your `A` record on.
+4. Edit `config.py` and change the domain to your domain.
+
+
