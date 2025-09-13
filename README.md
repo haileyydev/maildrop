@@ -7,10 +7,19 @@ Maildrop is a self hostable and easy to use disposable email service that allows
 
 ![App Screenshot](pictures/app.png)
 
-## Use cases
+## App Features
+
+### Use cases
 
 - Signing up to services without using your real email address
 - Easily creating multiple accounts on services
+
+### Features
+
+- [ ] Random email generation
+- [ ] Use custom emails
+- [ ] Support for password protected inboxes
+- [ ] Easy setup
 
 ## Running the application
 
@@ -48,9 +57,3 @@ Maildrop is a self hostable and easy to use disposable email service that allows
     ```
 
 **The application must be run as root for the SMTP server to work**
-
-## Features
-
-- [ ] temp
-- [ ] temp
-- [ ] temp
