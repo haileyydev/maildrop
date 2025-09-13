@@ -1,0 +1,40 @@
+{
+    "recipient@example.com": [
+        {
+            "From": "newsletter@example.com",
+            "To": "recipient@example.com",
+            "Subject": "Exciting News from Our Team!",
+            "Timestamp": 1756646806,
+            "Sent": "Aug 31 at 13:26:46",
+            "Body": "<!DOCTYPE html><html><head><style>body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }.email-container { max-width: 600px; margin: auto; background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }.header { background-color: #007bff; color: white; padding: 20px; text-align: center; }.content { padding: 30px; line-height: 1.6; color: #333; }.cta-button { display: inline-block; padding: 12px 24px; margin-top: 20px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }.footer { background-color: #f0f0f0; padding: 20px; text-align: center; font-size: 12px; color: #666; }</style></head><body><div class=\"email-container\"><div class=\"header\"><h1>Exciting News from Our Team!</h1></div><div class=\"content\"><p>Dear Valued Customer,</p><p>We are thrilled to announce some major updates to our service! We've listened to your feedback and made a number of improvements to enhance your experience. Check out our latest features below.</p><table style=\"width:100%; border-collapse: collapse; margin-top: 20px;\"><tr><td style=\"padding: 10px; border: 1px solid #eee;\"><h3 style=\"margin-top:0;\">Feature 1: New Dashboard</h3><p>A completely redesigned user interface for easier navigation and a better overview of your data.</p></td></tr><tr><td style=\"padding: 10px; border: 1px solid #eee;\"><h3 style=\"margin-top:0;\">Feature 2: Enhanced Security</h3><p>We've implemented multi-factor authentication to keep your account safer than ever.</p></td></tr></table><p style=\"text-align: center;\"><img src=\"https://via.placeholder.com/500x200.png?text=Featured+Image\" alt=\"Placeholder\" style=\"max-width: 100%; height: auto; margin-top: 20px;\"></p><p>Ready to see the changes? Click the button below to log in to your account.</p><p style=\"text-align: center;\"><a href=\"https://example.com/login\" class=\"cta-button\">Log In Now</a></p></div><div class=\"footer\"><p>This email was sent to you because you are a registered user. If you no longer wish to receive these emails, you can <a href=\"#\">unsubscribe here</a>.</p><p>&copy; 2025 Your Company. All Rights Reserved.</p></div></div></body></html>",
+            "ContentType": "HTML"
+        },
+        {
+            "From": "sender@yourdomain.com",
+            "To": "recipient@example.com",
+            "Subject": "Arch Linux SMTP Test",
+            "Timestamp": 1756646807,
+            "Sent": "Aug 31 at 13:26:47",
+            "Body": "This is a test email sent from Arch Linux to your SMTP server.\r\n",
+            "ContentType": "Text"
+        },
+        {
+            "From": "sender@yourdomain.com",
+            "To": "recipient@example.com",
+            "Subject": "Arch Linux SMTP Test",
+            "Timestamp": 1756646807,
+            "Sent": "Aug 31 at 13:26:47",
+            "Body": "This is a test email sent from Arch Linux to your SMTP server.\r\n",
+            "ContentType": "Text"
+        },
+        {
+            "From": "sender@yourdomain.com",
+            "To": "recipient@example.com",
+            "Subject": "Arch Linux SMTP Test",
+            "Timestamp": 1756646808,
+            "Sent": "Aug 31 at 13:26:48",
+            "Body": "This is a test email sent from Arch Linux to your SMTP server.\r\n",
+            "ContentType": "Text"
+        }
+    ]
+}

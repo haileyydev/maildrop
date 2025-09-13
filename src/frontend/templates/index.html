@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MailDrop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>
+                <img src="{{ url_for('static', filename='resources/mail-icon.svg') }}" alt="Mail Icon">
+                maildrop
+            </h1>
+            <p>Your free and open source disposable email inbox.</p>
+        </header>
+        <section class="email-panel">
+            <div class="email-display">
+                <input type="text" id="email-input" value="waiting to be assigned email" readonly>
+            </div>
+            <div class="action-buttons">
+                <button id="random-btn" class="btn btn-primary">
+                    <img src="{{ url_for('static', filename='resources/random-icon.svg') }}" alt="Random Icon">
+                    Generate Random
+                </button>
+                <div class="tooltip">
+                    <button id="copy-btn" class="btn btn-secondary">
+                        <img src="{{ url_for('static', filename='resources/copy-icon.svg') }}" alt="Copy Icon">
+                        Copy Email
+                    </button>
+                </div>
+                <button id="custom-btn" class="btn btn-secondary">
+                    <img src="{{ url_for('static', filename='resources/edit-icon.svg') }}" alt="Edit Icon">
+                    Use Custom
+                </button>
+            </div>
+        </section>
+
+        <main class="inbox-section">
+            <div class="inbox-header">
+                <h2>Your Inbox</h2>
+                <button id="refresh-btn" title="Refresh Inbox">
+                    <img src="{{ url_for('static', filename='resources/refresh-icon.svg') }}" alt="Refresh Icon">
+                </button>
+            </div>
+            <ul id="inbox-list"></ul>
+            <div id="inbox-placeholder">
+                <p>Your emails will appear here. Refresh to check for new mail.</p>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/api.js') }}"></script>
+</body>
+</html>

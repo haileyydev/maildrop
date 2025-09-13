@@ -1,0 +1,4 @@
+flask
+aiosmtpd
+setuptools
+pyasyncore
