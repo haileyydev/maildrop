@@ -67,4 +67,15 @@ Maildrop is a self hostable and easy to use disposable email service that allows
 3. Edit your domains dns settings and create an `MX` record pointing to the domain you made your `A` record on.
 4. Edit `.env` and change the domain to your domain.
 
+### Running with docker
 
+sudo docker run \
+  -d \
+  --restart unless-stopped \
+  --name maildrop \
+  -p 5000:5000 \
+  -p 25:25 \
+  -e DOMAIN="yourdomain.com" \
+  haileyydev/maildrop:latest  
+
+Replace yourdomain.com with your domain.
