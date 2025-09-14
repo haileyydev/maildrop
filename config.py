@@ -1,20 +1,19 @@
-# Flask server config
-FLASK_HOST = "0.0.0.0"
-FLASK_PORT = 5000
+import os
+from dotenv import load_dotenv
 
-# SMTP server config
-SMTP_HOST = "0.0.0.0"
-SMTP_PORT = 25
+load_dotenv()
 
-# File config
-INBOX_FILE_NAME = "inbox.json"
-MAX_INBOX_SIZE = 100*(10**6) # 100MB (in bytes) (clears inbox when reached)
+FLASK_HOST = os.getenv("FLASK_HOST", "0.0.0.0")
+FLASK_PORT = int(os.getenv("FLASK_PORT", 5000))
 
-# Email config
-PROTECTED_ADDRESSES = "^me.*" # regex for inboxes that need a password
+SMTP_HOST = os.getenv("SMTP_HOST", "0.0.0.0")
+SMTP_PORT = int(os.getenv("SMTP_PORT", 25))
 
-# Password
-PASSWORD = "password" # admin password needed to access protected emails, change settings (not implemented), etc.
+INBOX_FILE_NAME = os.getenv("INBOX_FILE_NAME", "inbox.json")
+MAX_INBOX_SIZE = int(os.getenv("MAX_INBOX_SIZE", 100000000))
 
-# Domain config
-DOMAIN = "haileyy.dev"
+PROTECTED_ADDRESSES = os.getenv("PROTECTED_ADDRESSES", "^me.*")
+
+PASSWORD = os.getenv("PASSWORD", "password")
+
+DOMAIN = os.getenv("DOMAIN", "haileyy.dev")
