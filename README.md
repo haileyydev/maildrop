@@ -69,6 +69,7 @@ Maildrop is a self hostable and easy to use disposable email service that allows
 
 ### Running with docker
 
+```
 sudo docker run \
   -d \
   --restart unless-stopped \
@@ -77,5 +78,6 @@ sudo docker run \
   -p 25:25 \
   -e DOMAIN="yourdomain.com" \
   haileyydev/maildrop:latest  
+```
 
 Replace yourdomain.com with your domain.
