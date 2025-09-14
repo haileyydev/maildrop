@@ -3,7 +3,9 @@
     Maildrop
 </h1>
 
-Maildrop is a self hostable and easy to use disposable email service that allows you to receive emails on a random email address on your domain.
+Maildrop is a self hostable and easy to use disposable email service that allows you to receive emails on a random email address on your domain.  
+
+![https://haileyy.dev](https://haileyy.dev) - Hosted instance
 
 ![App Screenshot](pictures/app.png)
 
