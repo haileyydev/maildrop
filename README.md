@@ -76,6 +76,7 @@ Maildrop is a self hostable and easy to use disposable email service that allows
 
 ### Running with docker
 
+Use this command to run maildrop in a docker container:
 ```
 sudo docker run \
   -d \
@@ -86,5 +87,17 @@ sudo docker run \
   -e DOMAIN="yourdomain.com" \
   haileyydev/maildrop:latest  
 ```
-
-Replace yourdomain.com with your domain.
+Or if you prefer docker compose, Add this to your compose.yml file:
+```
+services:
+  maildrop:
+    image: haileyydev/maildrop:latest
+    container_name: maildrop
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+      - "25:25"
+    environment:
+      - DOMAIN=yourdomain.com
+```
+and then start it: `sudo docker compose up -d`
