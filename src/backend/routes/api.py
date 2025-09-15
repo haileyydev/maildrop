@@ -13,6 +13,11 @@ def get_random_address():
     random_string = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
     return jsonify({"address": f"{random_string}@{config.DOMAIN}"}), 200
 
+# Get an email domain
+@bp.route('/get_domain')
+def get_domain():
+    return jsonify({"domain": config.DOMAIN}), 200
+
 # The main route that serves the website
 @bp.route('/get_inbox')
 def get_inbox():

@@ -92,9 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function handleCustomEmail() {
-        const customEmail = prompt("Enter your custom email address:");
+    async function handleCustomEmail() {
+        var customEmail = prompt("Enter your custom email address:");
         if (customEmail) {
+            if (!customEmail.includes("@")) {
+                domain = await getDomain();
+                customEmail = customEmail + "@" + domain.domain;
+            }
             updateEmail(customEmail);
         }
     }
