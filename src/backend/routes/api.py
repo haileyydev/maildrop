@@ -24,7 +24,7 @@ def get_inbox():
     addr = request.args.get("address", "")
     password = request.headers.get("Authorization", None)
 
-    if re.match(config.PROTECTED_ADDRESSES, addr) and password != config.PROTECTED_PASSWORD:
+    if re.match(config.PROTECTED_ADDRESSES, addr) and password != config.PASSWORD:
         return jsonify({"error": "Unauthorized"}), 401
 
     inbox = inbox_handler.read_inbox()
