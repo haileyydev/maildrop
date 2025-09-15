@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     let currentEmail = "";
-    let inboxInterval;
 
     const emailInput = document.getElementById('email-input');
     const randomBtn = document.getElementById('random-btn');
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const copyBtn = document.getElementById('copy-btn');
     const inboxList = document.getElementById('inbox-list');
     const placeholder = document.getElementById('inbox-placeholder');
-    const copyTooltip = document.getElementById('copy-tooltip');
 
     function copyToClipboard() {
         emailInput.select();
@@ -106,4 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
     (async () => {
         await generateRandomEmail();
     })();
+
+    setInterval(fetchInbox, 5000);
 });
