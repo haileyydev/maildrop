@@ -12,7 +12,7 @@ SMTP_PORT = int(os.getenv("SMTP_PORT", 25))
 INBOX_FILE_NAME = os.getenv("INBOX_FILE_NAME", "inbox.json")
 MAX_INBOX_SIZE = int(os.getenv("MAX_INBOX_SIZE", 100000000))
 
-PROTECTED_ADDRESSES = os.getenv("PROTECTED_ADDRESSES", "^me.*")
+PROTECTED_ADDRESSES = os.getenv("PROTECTED_ADDRESSES", "^admin.*")
 
 PASSWORD = os.getenv("PASSWORD", "password")
 
