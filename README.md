@@ -18,10 +18,17 @@ Maildrop is a self hostable and easy to use disposable email service that allows
 
 ### Features
 
-- [ ] Random email generation
-- [ ] Use custom emails
-- [ ] Support for password protected inboxes
-- [ ] Easy setup
+- [x] Random email generation
+- [x] Use custom emails
+- [x] Support for password protected inboxes
+- [x] Clean UI
+- [x] Easy setup
+
+### Planned Features
+
+- [ ] Better mobile UI
+- [ ] Settings web page
+- [ ] Multi domain support
 
 ## Running the application
 
