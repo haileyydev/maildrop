@@ -23,17 +23,15 @@
             <div class="action-buttons">
                 <button id="random-btn" class="btn btn-primary">
                     <img src="{{ url_for('static', filename='resources/random-icon.svg') }}" alt="Random Icon">
-                    Generate Random
+                    <span class="button-text">Generate Random</span>
                 </button>
-                <div class="tooltip">
-                    <button id="copy-btn" class="btn btn-secondary">
-                        <img src="{{ url_for('static', filename='resources/copy-icon.svg') }}" alt="Copy Icon">
-                        Copy Email
-                    </button>
-                </div>
+                <button id="copy-btn" class="btn btn-secondary">
+                    <img src="{{ url_for('static', filename='resources/copy-icon.svg') }}" alt="Copy Icon">
+                    <span class="button-text">Copy Email</span>
+                </button>
                 <button id="custom-btn" class="btn btn-secondary">
                     <img src="{{ url_for('static', filename='resources/edit-icon.svg') }}" alt="Edit Icon">
-                    Use Custom
+                    <span class="button-text">Use Custom</span>
                 </button>
             </div>
         </section>

@@ -304,3 +304,15 @@ body {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
+/* mobile design */
+@media (max-width: 600px) {
+    /* make buttons turn into icons */
+    .button-text {
+        display: none;
+    }
+
+    .action-buttons {
+        justify-content: center;
+    }
+}
