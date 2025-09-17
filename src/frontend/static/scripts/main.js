@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // make variables
     let currentEmail = "";
+    let currentInbox = [];
 
     // make element references
     const emailInput = document.getElementById('email-input');
@@ -38,6 +39,18 @@ document.addEventListener("DOMContentLoaded", () => {
         emailInput.value = email;
         fetchInbox();
     }
+    
+    // check if inboxes are different
+    function haveInboxesChanged(oldInbox, newInbox) {
+        if (oldInbox.length !== newInbox.length) {
+            return true;
+        }
+
+        const oldEmailIds = new Set(oldInbox.map(email => email.Timestamp));
+        const hasNewEmail = newInbox.some(email => !oldEmailIds.has(email.Timestamp));
+        return hasNewEmail;
+    }
+
 
     // fetch the inbox from the server
     async function fetchInbox() {
@@ -46,21 +59,26 @@ document.addEventListener("DOMContentLoaded", () => {
         refreshBtn.classList.add('loading');
 
         let password = localStorage.getItem(`${currentEmail}-password`);
-        let inbox = await getInbox(currentEmail, password);
+        let newInbox = await getInbox(currentEmail, password);
 
-        if (inbox.error === "Unauthorized") {
+        if (newInbox.error === "Unauthorized") {
             password = prompt("Enter password:");
             if (password) {
                 localStorage.setItem(`${currentEmail}-password`, password);
-                inbox = await getInbox(currentEmail, password);
-                if (inbox.error === "Unauthorized") {
+                newInbox = await getInbox(currentEmail, password);
+                if (newInbox.error === "Unauthorized") {
                     await generateRandomEmail();
                 }
             } else {
                 await generateRandomEmail();
             }
         }
-        renderInbox(inbox);
+
+        if (haveInboxesChanged(currentInbox, newInbox)) {
+            renderInbox(newInbox);
+        }
+
+        currentInbox = newInbox;
 
         refreshBtn.classList.remove('loading');
     }
