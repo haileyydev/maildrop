@@ -240,6 +240,11 @@ body {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
+/* sender and subject container */
+.email-details {
+    min-width: 0;
+}
+
 /* summary excluding body */
 .email-summary {
     padding: 1rem;

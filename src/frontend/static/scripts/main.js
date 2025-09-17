@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 emailItem.className = 'email-item';
                 emailItem.innerHTML = `
                     <div class="email-summary">
-                        <div>
+                        <div class="email-details">
                             <div class="sender">${email.From}</div>
                             <div class="subject">${email.Subject}</div>
                         </div>
