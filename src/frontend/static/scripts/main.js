@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // make variables
     let currentEmail = "";
 
+    // make element references
     const emailInput = document.getElementById('email-input');
     const randomBtn = document.getElementById('random-btn');
     const customBtn = document.getElementById('custom-btn');
@@ -9,27 +11,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const inboxList = document.getElementById('inbox-list');
     const placeholder = document.getElementById('inbox-placeholder');
 
+    // add event listeners
+    copyBtn.addEventListener('click', copyToClipboard);
+    randomBtn.addEventListener('click', generateRandomEmail);
+    refreshBtn.addEventListener('click', fetchInbox);
+    customBtn.addEventListener('click', handleCustomEmail);
+
+    // function defnitions
+
+    // copy email to clipboard
     function copyToClipboard() {
         emailInput.select();
         document.execCommand('copy');
         alert('Copied!');
     }
 
-    copyBtn.addEventListener('click', copyToClipboard);
-
+    // generate random email and assign it as the current email
     async function generateRandomEmail() {
         const newAddress = await getRandomAddress();
         updateEmail(newAddress.address);
     }
 
-    randomBtn.addEventListener('click', generateRandomEmail);
-
+    // update the current email
     function updateEmail(email) {
         currentEmail = email;
         emailInput.value = email;
         fetchInbox();
     }
 
+    // fetch the inbox from the server
     async function fetchInbox() {
         if (!currentEmail) return;
 
@@ -55,8 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         refreshBtn.classList.remove('loading');
     }
 
-    refreshBtn.addEventListener('click', fetchInbox);
-
+    // render the inbox in the inbox element
     function renderInbox(inbox) {
         inboxList.innerHTML = '';
         if (inbox && inbox.length > 0) {
@@ -92,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // use a custom email address
     async function handleCustomEmail() {
         var customEmail = prompt("Enter your custom email address:");
         if (customEmail) {
@@ -103,11 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    customBtn.addEventListener('click', handleCustomEmail);
-
+    // generate an email when the page loads
     (async () => {
         await generateRandomEmail();
     })();
 
+    // automatic inbox refreshing
     setInterval(fetchInbox, 5000);
 });
