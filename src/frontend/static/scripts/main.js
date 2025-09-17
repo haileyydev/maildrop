@@ -51,6 +51,29 @@ document.addEventListener("DOMContentLoaded", () => {
         return hasNewEmail;
     }
 
+    // format time
+    function formatTime(timestamp) {
+        const now = Math.floor(Date.now() / 1000);
+
+        const secondsAgo = now - timestamp;
+
+        const minute = 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        if (secondsAgo >= day) {
+            const days = Math.floor(secondsAgo / day);
+            return `${days} days ago`;
+        } else if (secondsAgo >= hour) {
+            const hours = Math.floor(secondsAgo / hour);
+            return `${hours} hours ago`;
+        } else if (secondsAgo >= minute) {
+            const minutes = Math.floor(secondsAgo / minute);
+            return `${minutes} minutes ago`;
+        } else {
+            return `${secondsAgo} seconds ago`;
+        }
+    }
 
     // fetch the inbox from the server
     async function fetchInbox() {
@@ -97,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div class="sender">${email.From}</div>
                             <div class="subject">${email.Subject}</div>
                         </div>
-                        <div class="time">${email.Sent}</div>
+                        <div class="time">${formatTime(email.Timestamp)}</div>
                     </div>
                     <div class="email-body">
                         <iframe class="email-body-iframe" srcdoc=""></iframe>
