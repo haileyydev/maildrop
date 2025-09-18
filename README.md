@@ -24,7 +24,7 @@ Maildrop is a self hostable and easy to use disposable email service that allows
 
 ### Planned Features
 
-- [ ] Better mobile UI
+- [x] Better mobile UI
 - [ ] Settings web page
 - [ ] Multi domain support
 
