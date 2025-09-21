@@ -5,6 +5,8 @@
 
 *Your free and open source disposable email inbox.*
 
+![App Screenshot](pictures/app.png)
+
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
@@ -19,8 +21,6 @@
 - [License](#license)
 
 ## About The Project
-
-![App Screenshot](pictures/app.png)
 
 Maildrop is a self hostable and easy to use disposable email service that allows you to receive emails on a random email address on your domain.  
 
