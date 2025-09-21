@@ -3,16 +3,30 @@
     Maildrop
 </h1>
 
-Maildrop is a self hostable and easy to use disposable email service that allows you to receive emails on a random email address on your domain.  
+*Your free and open source disposable email inbox.*
+
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running with docker](#running-with-docker)
+- [Connecting to your domain](#connecting-to-your-domain)
+  - [Example DNS configurations](#example-dns-configurations)
+- [Configuration](#configuration)
+- [License](#license)
+
+## About The Project
 
 ![App Screenshot](pictures/app.png)
 
-## App Features
+Maildrop is a self hostable and easy to use disposable email service that allows you to receive emails on a random email address on your domain.  
 
-### Use cases
-
-- Signing up to services without using your real email address
-- Easily creating multiple accounts on services
+Maildrop is perfect for:
+- Signing up for services without revealing your email address.
+- Easily creating multiple accounts on websites.
 
 ### Features
 
@@ -21,21 +35,18 @@ Maildrop is a self hostable and easy to use disposable email service that allows
 - [x] Support for password protected inboxes
 - [x] Clean UI
 - [x] Easy setup
+- [x] Automatic inbox clearing
 
-### Planned Features
+## Getting Started
 
-- [x] Better mobile UI
-- [ ] Settings web page
-- [ ] Multi domain support
-
-## Running the application
+If you wish to install maildrop and run it with python, follow this guide, if you wish to install it with docker instead, then proceed to [Running with Docker](#running-with-docker).
 
 ### Prerequisites
 
 - Python 3
 - pip
 
-### Installation and running
+### Installation
 
 1.  **Clone the repository**
 
@@ -63,16 +74,13 @@ Maildrop is a self hostable and easy to use disposable email service that allows
     sudo python app.py
     ```
 
+Maildrop will be running on port 5000 and the smtp server on port 25.
+
 **The application must be run as root for the SMTP server to work**
 
-### Connecting to your domain  
-
-1. Ensure port 25 is open as this is the port the email server uses. Some ISPs block this so you may need to use a tunnel or host maildrop in the cloud.
-2. Edit your domains dns settings and create an `A` record pointing to your public IP.
-3. Edit your domains dns settings and create an `MX` record pointing to the domain you made your `A` record on.
-4. Edit `.env` and change the domain to your domain.
-
 ### Running with docker
+
+Alternatively, you can run maildrop inside of a docker container using the official docker image.
 
 Use this command to run maildrop in a docker container:
 ```
@@ -99,3 +107,64 @@ services:
       - DOMAIN=yourdomain.com
 ```
 and then start it: `sudo docker compose up -d`
+
+
+## Connecting to your domain  
+
+Follow this guide to set up receiving emails on your domain.
+
+1. **Ensure port `25` is open**  
+This is the port the smtp server uses. Some ISPs block this so you may need to use a tunnel or host maildrop in the cloud.
+2. **Create an `A` record in your dns settings**  
+Create this on the domain you want the maildrop running on. The ip address should be pointed to the public ip address of the server running maildrop.
+3. **Create an `MX` record in your dns settings**  
+Create this on the domain you want emails to be sent to. It should be pointed to the domain you created your `A` record on.
+4. **Edit `.env` and change the domain to your domain**  
+Edit the .env file and set `DOMAIN` to the domain you are receiving emails on (so the domain you created the MX record on). This is used for email address generation. If you are using docker, edit the DOMAIN environment variable directly.
+
+---
+
+### Example DNS configurations
+This is what the dns configuration should look like once you have created the records.
+
+---
+
+**If you are running maildrop on a different domain/subdomain than the one you are receiving emails on:**
+
+| Type | Domain                | Points To                |
+| ---- | --------------------- | ------------------------ |
+| `A`  | `maildrop.domain.com` | Your server's IP address |
+| `MX` | `domain.com`          | `maildrop.domain.com`    |
+
+In this configuration, you would be able to access maildrop from http://maildrop.domain.com:5000 (or preferably https://maildrop.domain.com if you are running a reverse proxy with https)
+
+---
+
+**If you are running maildrop on the same domain/subdomain than the one you are receiving emails on:**
+
+| Type | Domain       | Points To                |
+| ---- | ------------ | ------------------------ |
+| `A`  | `domain.com` | Your server's IP address |
+| `MX` | `domain.com` | `domain.com`             |
+
+In this configuration, you would be able to access maildrop from http://domain.com:5000 (or preferably https://domain.com if you are running a reverse proxy with https)
+
+## Configuration
+
+Edit .env to change these or set environment variables if you are using docker. These are currently all of the options
+
+| Variable              | Description                                           |
+| --------------------- | ----------------------------------------------------- |
+| `FLASK_HOST`          | The host for the website.                             |
+| `FLASK_PORT`          | The port for the website.                             |
+| `SMTP_HOST`           | The host for the SMTP server.                         |
+| `SMTP_PORT`           | The port for the SMTP server.                         |
+| `INBOX_FILE_NAME`     | The file where emails are stored.                     |
+| `MAX_INBOX_SIZE`      | The maximum size of the inbox.                        |
+| `PROTECTED_ADDRESSES` | A regex for inboxes that require a password.          |
+| `PASSWORD`            | The password for protected inboxes.                   |
+| `DOMAIN`              | The domain to be used for generating email addresses. |
+
+## License
+
+Distributed under the GNU General Public License v3.0.
