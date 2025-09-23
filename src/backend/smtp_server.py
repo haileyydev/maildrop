@@ -3,6 +3,7 @@ import asyncore
 import sys
 from aiosmtpd.controller import Controller
 from . import email_parser, inbox_handler
+import config
 
 # Class for SMTP server logic
 class SMTPServer:
@@ -10,6 +11,9 @@ class SMTPServer:
     async def handle_DATA(self, server, session, envelope):
         try:
             parsed_email = email_parser.email_bytes_to_json(envelope.content)
+            if not parsed_email['To'].endswith(config.DOMAIN):
+                return '500 Could not process email'
+
             inbox_handler.recv_email(parsed_email)
         except Exception as e:
             print(e)
