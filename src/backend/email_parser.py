@@ -20,8 +20,8 @@ def extract_email_address(field: str) -> str:
 def email_bytes_to_json(data: bytes) -> dict:
     msg = BytesParser().parsebytes(data)
     
-    to_field = extract_email_address(msg.get("To", ""))
-    from_field = extract_email_address(msg.get("From", ""))
+    to_field = extract_email_address(msg.get("To", "")).lower()
+    from_field = extract_email_address(msg.get("From", "")).lower()
     
     current_timestamp = int(time.time())
 

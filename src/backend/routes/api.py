@@ -18,10 +18,10 @@ def get_random_address():
 def get_domain():
     return jsonify({"domain": config.DOMAIN}), 200
 
-# The main route that serves the website
+# This route returns the contents of an inbox
 @bp.route('/get_inbox')
 def get_inbox():
-    addr = request.args.get("address", "")
+    addr = request.args.get("address", "").lower()
     password = request.headers.get("Authorization", None)
 
     if re.match(config.PROTECTED_ADDRESSES, addr) and password != config.PASSWORD:
