@@ -1,15 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 /* main colour scheme and font for site */
 :root {
-    --bg-color: #121212; /* background */
-    --surface-color: #1e1e1e; /* boxes background */
-    --primary-color: #6a5acd; /* primary accent */
-    --primary-hover-color: #7b68ee; /* primary color when hovered */
-    --text-color: #e0e0e0; /* text colour */
-    --text-dark-color: #a0a0a0; /* darker text */
+    --bg-color: #161319; /* background */
+    --surface-color: #0e0d0f; /* boxes background */
+    --primary-color: #64317f; /* primary accent */
+    --primary-hover-color: #17101b; /* primary color when hovered */
+    --secondary-color: #332e36; /* secondary color */
+    --secondary-hover-color: #4b474d; /* secondary color when hovered */
+    --text-color: #f7ebff; /* text colour */
+    --text-dark-color: #736b78; /* darker text */
     --border-color: #333333; /* border of boxes */
-    --font-family: 'Poppins', sans-serif; /* cool font */
+    --container-radius: 8px; /* border radius */
+    --content-radius: 5px; /* border radius */
+    --font-family: 'Roboto Mono', monospace; /* cool font */
 }
 
 * {
@@ -72,7 +76,7 @@ body {
 .email-panel {
     background-color: var(--surface-color);
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: var(--container-radius);
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -86,7 +90,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     background-color: var(--bg-color);
-    border-radius: 8px;
+    border-radius: var(--content-radius);
     padding: 0.75rem;
     border: 1px solid var(--border-color);
 }
@@ -118,7 +122,7 @@ body {
 .btn {
     padding: 0.75rem 1.25rem;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--content-radius);
     font-family: var(--font-family);
     font-size: 0.9rem;
     font-weight: 500;
@@ -150,13 +154,13 @@ body {
 
 /* secondary buttons */
 .btn-secondary {
-    background-color: #333;
+    background-color: var(--secondary-color);
     color: var(--text-color);
 }
         
 /* hover effect */
 .btn-secondary:hover {
-    background-color: #444;
+    background-color: var(--secondary-hover-color);
     transform: translateY(-2px);
 }
 
@@ -164,7 +168,7 @@ body {
 .inbox-section {
     background-color: var(--surface-color);
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: var(--container-radius);
     border: 1px solid var(--border-color);
     animation: fadeIn 0.7s ease-in-out;
 }
@@ -290,7 +294,7 @@ body {
     width: 100%;
     height: 400px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--content-radius);
 }
 
 /* the body container (open) */
