@@ -89,7 +89,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: var(--bg-color);
+    background-color: #0d0b0f;
     border-radius: var(--content-radius);
     padding: 0.75rem;
     border: 1px solid var(--border-color);
