@@ -5,12 +5,13 @@
     --bg-color: #161319; /* background */
     --surface-color: #0e0d0f; /* boxes background */
     --primary-color: #64317f; /* primary accent */
-    --primary-hover-color: #17101b; /* primary color when hovered */
+    --primary-hover-color: #784097; /* primary color when hovered */
     --secondary-color: #332e36; /* secondary color */
     --secondary-hover-color: #4b474d; /* secondary color when hovered */
     --text-color: #f7ebff; /* text colour */
     --text-dark-color: #736b78; /* darker text */
     --border-color: #272329; /* border of boxes */
+    --input-color: #0d0b0f; /* email display */
     --container-radius: 8px; /* border radius */
     --content-radius: 5px; /* border radius */
     --font-family: 'Roboto Mono', monospace; /* cool font */
@@ -89,7 +90,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: #0d0b0f;
+    background-color: var(--input-color);
     border-radius: var(--content-radius);
     padding: 0.75rem;
     border: 1px solid var(--border-color);
