@@ -197,7 +197,9 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.querySelector('form').onsubmit = async (event) => {
             event.preventDefault();
             const submitBtn = overlay.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
             submitBtn.disabled = true;
+            submitBtn.innerHTML = "Sending..";
 
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
