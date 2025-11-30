@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maildrop</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/forms.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='resources/favicon.ico') }}">
     <meta name="title" content="Maildrop" />
     <meta name="description" content="maildrop is a free disposable email service." />
@@ -39,6 +40,12 @@
                     <img src="{{ url_for('static', filename='resources/edit-icon.svg') }}" alt="Edit Icon">
                     <span class="button-text">Use Custom</span>
                 </button>
+                {% if enable_sending %}
+                <button id="send-btn" class="btn btn-secondary">
+                    <img src="{{ url_for('static', filename='resources/send-icon.svg') }}" alt="Send Icon">
+                    <span class="button-text">Send</span>
+                </button>
+                {% endif %}
             </div>
         </section>
 

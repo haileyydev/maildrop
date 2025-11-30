@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify
 from .. import inbox_handler
+from .. import sender
 import config
 import re
 import random
@@ -30,3 +31,29 @@ def get_inbox():
     inbox = inbox_handler.read_inbox()
     address_inbox = inbox.get(addr, [])
     return jsonify(address_inbox), 200
+
+# This route sends an email
+@bp.route('/send_email', methods=['POST'])
+def send_email_route():
+    if not config.ENABLE_SENDING:
+        return jsonify({"error": "Sending is disabled"}), 403
+    
+    data = request.json
+    
+    from_address = data.get('From') 
+    to_address = data.get('To')
+    subject = data.get('Subject')
+    body = data.get('Body')
+
+    if not all([from_address, to_address, subject, body]):
+        return jsonify({"error": "Missing fields"}), 400
+
+    if not from_address.endswith(config.DOMAIN):
+         return jsonify({"error": f"You can only send from @{config.DOMAIN} addresses"}), 403
+    
+    success, message = sender.send_email(from_address, to_address, subject, body)
+
+    if success:
+        return jsonify({"message": message}), 200
+    else:
+        return jsonify({"error": message}), 500

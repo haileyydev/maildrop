@@ -11,12 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const copyBtn = document.getElementById('copy-btn');
     const inboxList = document.getElementById('inbox-list');
     const placeholder = document.getElementById('inbox-placeholder');
+    const sendBtn = document.getElementById('send-btn');
 
     // add event listeners
     copyBtn.addEventListener('click', copyToClipboard);
     randomBtn.addEventListener('click', generateRandomEmail);
     refreshBtn.addEventListener('click', fetchInbox);
     customBtn.addEventListener('click', handleCustomEmail);
+    if (sendBtn) {
+        sendBtn.addEventListener('click', sendButtonClicked); 
+    }
 
     // function defnitions
 
@@ -152,6 +156,104 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             updateEmail(customEmail);
         }
+    }
+
+    // shows a form to the user
+    function showModalForm(title, fields, onSubmit) {
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay';
+
+        const fieldsHtml = fields.map(field => `
+        <div class="form-group">
+            <label for="${field.name}">${field.label}</label>
+            ${field.multiline
+                ? `<textarea id="${field.name}" name="${field.name}" class="form-control" rows="5" placeholder="${field.placeholder || ''}" ${field.required ? 'required' : ''}>${field.value || ''}</textarea>`
+                : `<input type="${field.type || 'text'}" id="${field.name}" name="${field.name}" class="form-control" value="${field.value || ''}" placeholder="${field.placeholder || ''}" ${field.required ? 'required' : ''} ${field.readonly ? 'readonly' : ''}>`
+            }
+        </div>`).join('');
+
+        overlay.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>${title}</h2>
+            </div>
+            <form id="dynamic-modal-form">
+                ${fieldsHtml}
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>`;
+
+        document.body.appendChild(overlay);
+
+        const close = () => document.body.removeChild(overlay);
+
+        overlay.querySelector('.cancel-btn').onclick = close;
+
+        overlay.querySelector('form').onsubmit = async (event) => {
+            event.preventDefault();
+            const submitBtn = overlay.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                await onSubmit(data);
+                close();
+            } catch (error) {
+                alert("Error: " + error.message);
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        };
+    }
+
+    // when send button is clicked show the form
+    function sendButtonClicked() {
+        const formData = [
+            {
+                name: "from",
+                label: "From",
+                value: currentEmail,
+                readonly: true
+            },
+            {
+                name: "to",
+                label: "To",
+                type: "email",
+                placeholder: "example@example.com",
+                required: true
+            },
+            {
+                name: "subject",
+                label: "Subject",
+                placeholder: "Email subject",
+                required: true
+            },
+            {
+                name: "body",
+                label: "Message",
+                multiline: true,
+                required: true,
+                placeholder: "Main email body"
+            }
+        ]
+        showModalForm(
+            "Send Email",
+            formData,
+            async (data) => {
+                const result = await sendEmail(data.from, data.to, data.subject, data.body);
+                if (result.error) {
+                    throw new Error(result.error);
+                }
+                alert("Email sent successfully!");
+            }
+        );
     }
 
     // generate an email when the page loads

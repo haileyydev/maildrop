@@ -28,3 +28,21 @@ async function getDomain() {
     
     return await response.json();
 }
+
+// send an email
+async function sendEmail(fromAddress, toAddress, subject, body) {
+    const response = await fetch('/send_email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            From: fromAddress,
+            To: toAddress,
+            Subject: subject,
+            Body: body
+        })
+    });
+
+    return await response.json();
+}
