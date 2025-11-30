@@ -3,7 +3,7 @@
     Maildrop
 </h1>
 
-*Your free and open source disposable email inbox.*
+*A simple self hostable email inbox*
 
 ![App Screenshot](pictures/app.png)
 
@@ -22,10 +22,11 @@
 
 ## About The Project
 
-Maildrop is a self hostable and easy to use disposable email service that allows you to receive emails on a random email address on your domain.  
+Maildrop is a self hostable and easy to use email service that allows you to receive emails on any address on your domain.  
 
-Maildrop is perfect for:
-- Signing up for services without revealing your email address.
+It is perfect for:
+- People who want to easily use multiple email addresses.
+- Signing up for services without without using your main email address.
 - Easily creating multiple accounts on websites.
 
 ### Features
