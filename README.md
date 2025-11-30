@@ -18,6 +18,7 @@
 - [Connecting to your domain](#connecting-to-your-domain)
   - [Example DNS configurations](#example-dns-configurations)
 - [Configuration](#configuration)
+- [Sending](#sending)
 - [License](#license)
 
 ## About The Project
@@ -37,6 +38,8 @@ It is perfect for:
 - [x] Clean UI
 - [x] Easy setup
 - [x] Automatic inbox clearing
+- [x] (Optional) Sending Emails  
+[Set up sending](#sending)
 
 ## Getting Started
 
@@ -165,6 +168,9 @@ Edit .env to change these or set environment variables if you are using docker. 
 | `PROTECTED_ADDRESSES` | A regex for inboxes that require a password.          |
 | `PASSWORD`            | The password for protected inboxes.                   |
 | `DOMAIN`              | The domain to be used for generating email addresses. |
+
+## Sending
+Maildrop also supports sending mail as an optional feature. Visit the [Sending Guide](docs/SENDING.md) for instructions.
 
 ## License
 
