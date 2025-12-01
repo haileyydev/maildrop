@@ -16,7 +16,7 @@ PROTECTED_ADDRESSES = os.getenv("PROTECTED_ADDRESSES", "^admin.*")
 
 PASSWORD = os.getenv("PASSWORD", "password")
 
-DOMAIN = os.getenv("DOMAIN", "haileyy.dev")
+DOMAIN = os.getenv("DOMAIN", "yourdomain.com")
 
 ENABLE_SENDING = os.getenv("ENABLE_SENDING", "false").lower() == "true"
 RELAY_HOST = os.getenv("RELAY_HOST", "")

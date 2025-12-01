@@ -8,7 +8,7 @@ def format_time(timestamp: float) -> str:
     dt_object = datetime.utcfromtimestamp(timestamp)
     return dt_object.strftime("%b %d at %H:%M:%S")
 
-# Extracts the email address from a field that could contain a name and email like: Hailey Thomas <me@haileyy.dev>
+# Extracts the email address from a field that could contain a name and email like: Example Name <example@example.com>
 def extract_email_address(field: str) -> str:
     if '<' in field and '>' in field:
         start = field.find('<') + 1
