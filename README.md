@@ -19,6 +19,7 @@
   - [Example DNS configurations](#example-dns-configurations)
 - [Configuration](#configuration)
 - [Sending](#sending)
+- [API Reference](#api-reference)
 - [License](#license)
 
 ## About The Project
@@ -171,6 +172,9 @@ Edit .env to change these or set environment variables if you are using docker. 
 
 ## Sending
 Maildrop also supports sending mail as an optional feature. Visit the [Sending Guide](docs/SENDING.md) for instructions.
+
+## API Reference
+Visit the [API Reference](docs/API.md) for instructions on interacting with maildrop via the simple JSON API.
 
 ## License
 
