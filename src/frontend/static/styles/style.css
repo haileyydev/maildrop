@@ -298,6 +298,10 @@ body {
     border-radius: var(--content-radius);
 }
 
+.email-body-iframe {
+    background-color: #ffffff;
+}
+
 /* the body container (open) */
 .email-item.open .email-body {
     max-height: 1000px;
