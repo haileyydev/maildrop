@@ -110,6 +110,28 @@ document.addEventListener("DOMContentLoaded", () => {
         refreshBtn.classList.remove('loading');
     }
 
+    // wrap email body so it displays readable and links open in new tab; respects prefers-color-scheme
+    function wrapEmailBodyForReadability(html) {
+        const style = `
+            html, body, body * {
+                background-color: #fff !important;
+                color: #1a1a1a !important;
+            }
+            a { color: #64317f !important; }
+            body { font-family: inherit; padding: 0.5rem 0.75rem; margin: 0; }
+            @media (prefers-color-scheme: dark) {
+                html, body, body * {
+                    background-color: #0e0d0f !important;
+                    color: #f7ebff !important;
+                }
+                a { color: #b87fd4 !important; }
+            }
+        `;
+        let bodyHtml = html.replace(/\btarget\s*=\s*["']?(?:_self|_parent|_top)["']?/gi, 'target="_blank"');
+        bodyHtml = bodyHtml.replace(/<a\s+(?![^>]*\btarget\s*=)/gi, '<a target="_blank" rel="noopener noreferrer" ');
+        return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="color-scheme" content="light dark"><style>${style}</style></head><body>${bodyHtml}</body></html>`;
+    }
+
     // render the inbox in the inbox element
     function renderInbox(inbox) {
         inboxList.innerHTML = '';
@@ -127,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="time">${formatTime(email.Timestamp)}</div>
                     </div>
                     <div class="email-body">
-                        <iframe class="email-body-iframe" srcdoc=""></iframe>
+                        <iframe class="email-body-iframe" sandbox="sandbox allow-popups" srcdoc=""></iframe>
                     </div>
                 `;
                 inboxList.appendChild(emailItem);
@@ -137,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     emailItem.classList.toggle('open');
                     const iframe = emailItem.querySelector('.email-body-iframe');
                     if (emailItem.classList.contains('open')) {
-                        iframe.srcdoc = email.Body;
+                        iframe.srcdoc = wrapEmailBodyForReadability(email.Body);
                     }
                 });
             });
