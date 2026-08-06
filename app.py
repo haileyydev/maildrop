@@ -14,7 +14,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # import backend after logging is set up to report errors
-    import config
+    import src.backend.config as config
     from src.backend.flask_app import run_flask_server
     from src.backend.smtp_server import run_smtp_server
 

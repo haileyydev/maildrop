@@ -1,7 +1,7 @@
 import logging
 from aiosmtpd.controller import Controller
 from . import email_parser, inbox_handler
-import config
+import src.backend.config as config
 
 # Disable aiosmtpd's logging
 logging.getLogger('mail.log').setLevel(logging.ERROR)
