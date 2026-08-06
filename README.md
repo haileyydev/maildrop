@@ -67,7 +67,8 @@ If you wish to install maildrop and run it with python, follow this guide, if yo
     ```
 
 3.  **Run the application**
-    If the SMTP server runs on port 25, which it does by default it must be run as root:
+  
+    If the SMTP server runs on port 25, which it does by default, it must be run as root:
     ```bash
     sudo $(which uv) run maildrop
     ```
@@ -76,9 +77,7 @@ If you wish to install maildrop and run it with python, follow this guide, if yo
     uv run maildrop
     ```
 
-Maildrop will be running on port 5000 and the smtp server on port 25.
-
-**The application must be run as root for the SMTP server to work**
+Maildrop will be running on port 5000 and the smtp server on port 25 unless configured otherwise.
 
 ### Running with docker
 
