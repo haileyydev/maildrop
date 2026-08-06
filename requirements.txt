@@ -1,6 +1,5 @@
 flask
 aiosmtpd
 setuptools
-pyasyncore
 python-dotenv
 pydantic-settings

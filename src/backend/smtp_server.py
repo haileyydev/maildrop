@@ -1,6 +1,3 @@
-
-import asyncore
-import sys
 import logging
 from aiosmtpd.controller import Controller
 from . import email_parser, inbox_handler
@@ -38,5 +35,3 @@ def run_smtp_server(host: str = "0.0.0.0", port: int = 25):
         controller.start()
     except Exception as e:
         logger.critical(f"Failed to start SMTP server: {e}")
-    
-    asyncore.loop()
