@@ -1,7 +1,7 @@
 import json
 import re
 import os
-import src.backend.config as config
+import maildrop.backend.config as config
 import logging
 
 logger = logging.getLogger("maildrop")

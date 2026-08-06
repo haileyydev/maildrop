@@ -113,7 +113,7 @@ wheels = [
 [[package]]
 name = "maildrop"
 version = "1.0.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "aiosmtpd" },
     { name = "flask" },

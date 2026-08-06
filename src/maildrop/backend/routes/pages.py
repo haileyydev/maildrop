@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-import src.backend.config as config
+import maildrop.backend.config as config
 import logging
 
 logger = logging.getLogger("maildrop")

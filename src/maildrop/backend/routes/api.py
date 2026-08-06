@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify
 from .. import inbox_handler
 from .. import sender
-import src.backend.config as config
+import maildrop.backend.config as config
 import re
 import random
 import string

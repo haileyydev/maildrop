@@ -49,7 +49,7 @@ If you wish to install maildrop and run it with python, follow this guide, if yo
 ### Prerequisites
 
 - Python 3
-- pip
+- uv ([Installation Guide](https://docs.astral.sh/uv/))
 
 ### Installation
 
@@ -60,23 +60,20 @@ If you wish to install maildrop and run it with python, follow this guide, if yo
     cd maildrop
     ```
 
-2.  **Create a venv and activate it**
+2.  **Sync dependencies**
 
     ```bash
-    python -m venv venv
-    source venv/bin/activate
+    uv sync
     ```
 
-3.  **Install the requirements**
-
+3.  **Run the application**
+    If the SMTP server runs on port 25, which it does by default it must be run as root:
     ```bash
-    pip install -r requirements.txt
+    sudo $(which uv) run maildrop
     ```
-
-4.  **Run the application**
-
+    Otherwise you do not need root:
     ```bash
-    sudo python app.py
+    uv run maildrop
     ```
 
 Maildrop will be running on port 5000 and the smtp server on port 25.

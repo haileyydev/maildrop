@@ -3,7 +3,7 @@ import ssl
 import logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import src.backend.config as config
+import maildrop.backend.config as config
 
 logger = logging.getLogger("maildrop")
 
